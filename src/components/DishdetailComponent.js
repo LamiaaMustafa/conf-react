@@ -37,7 +37,7 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody,
                                     <li>
                                         <p>{com.comment}</p>  
                                     
-                                        <p>-- {com.author} , {com.date } </p>
+                                        <p>-- {com.author} , {new Intl.DateTimeFormat('en-US',{year:'numeric',month:'short',day:'2-digit'}).format(new Date(Date.parse(com.date))) } </p>
                                         </li>
                                 </div>    
                             );
@@ -57,11 +57,14 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody,
         render(){
             if(this.props.dish)
             return(
-                <div className="row">
-                        {this.renderDish(this.props.dish)}    
-                        {this.renderComments(this.props.dish.comments)}
-                    
+                <div className="container">
+                    <div className="row">
+                            {this.renderDish(this.props.dish)}    
+                            {this.renderComments(this.props.dish.comments)}
+                        
+                    </div>
                 </div>
+
                 );
             else
                 return(
